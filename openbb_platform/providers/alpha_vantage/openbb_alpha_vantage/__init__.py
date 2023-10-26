@@ -1,5 +1,6 @@
 """Alpha Vantage Provider module."""
 from openbb_alpha_vantage.models.stock_historical import AVStockHistoricalFetcher
+from openbb_alpha_vantage.models.forex_quote import AVForexQuoteFetcher
 from openbb_provider.abstract.provider import Provider
 
 alpha_vantage_provider = Provider(
@@ -15,5 +16,6 @@ alpha_vantage_provider = Provider(
     required_credentials=["api_key"],
     fetcher_dict={
         "StockHistorical": AVStockHistoricalFetcher,
+        "ForexQuote": AVForexQuoteFetcher,
     },
 )

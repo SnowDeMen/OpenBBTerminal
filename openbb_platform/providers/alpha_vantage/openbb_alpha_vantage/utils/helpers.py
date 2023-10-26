@@ -162,5 +162,5 @@ def get_interval(value: str) -> str:
 
 def extract_key_name(key):
     """Extract the alphabetical part of the key using regex."""
-    match = re.search(r"\d+\.\s+([a-z]+)", key, re.I)
+    match = re.search(r"\d+\.\s+(.*)", key, re.I)
     return match.group(1) if match else key
