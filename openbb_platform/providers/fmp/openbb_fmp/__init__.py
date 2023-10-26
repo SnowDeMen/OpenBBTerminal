@@ -16,6 +16,7 @@ from openbb_fmp.models.executive_compensation import FMPExecutiveCompensationFet
 from openbb_fmp.models.financial_ratios import FMPFinancialRatiosFetcher
 from openbb_fmp.models.forex_historical import FMPForexHistoricalFetcher
 from openbb_fmp.models.forex_pairs import FMPForexPairsFetcher
+from openbb_fmp.models.forex_quote import FMPForexQuoteFetcher
 from openbb_fmp.models.global_news import FMPGlobalNewsFetcher
 from openbb_fmp.models.historical_dividends import FMPHistoricalDividendsFetcher
 from openbb_fmp.models.historical_employees import FMPHistoricalEmployeesFetcher
@@ -87,6 +88,7 @@ fmp_provider = Provider(
         "CryptoHistorical": FMPCryptoHistoricalFetcher,
         "ForexHistorical": FMPForexHistoricalFetcher,
         "ForexPairs": FMPForexPairsFetcher,
+        "ForexQuote": FMPForexQuoteFetcher,
         "StockPeers": FMPStockPeersFetcher,
         "StockMultiples": FMPStockMultiplesFetcher,
         "HistoricalEmployees": FMPHistoricalEmployeesFetcher,
