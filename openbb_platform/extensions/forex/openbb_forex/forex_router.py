@@ -32,7 +32,7 @@ def load(
     standard_params: StandardParams,
     extra_params: ExtraParams,
 ) -> OBBject[BaseModel]:
-    """Forex Pairs Historical Price Data."""
+    """Forex Pair Historical Price Data."""
     return OBBject(results=Query(**locals()).execute())
 
 
@@ -44,5 +44,17 @@ def quote(
     standard_params: StandardParams,
     extra_params: ExtraParams,
 ) -> OBBject[BaseModel]:
-    """Forex Pairs Quote."""
+    """Forex Pair Quote."""
+    return OBBject(results=Query(**locals()).execute())
+
+
+# pylint: disable=unused-argument
+@router.command(model="ForexForwardRates")
+def fwd(
+    cc: CommandContext,
+    provider_choices: ProviderChoices,
+    standard_params: StandardParams,
+    extra_params: ExtraParams,
+) -> OBBject[BaseModel]:
+    """Forex Pair Forward Rate."""
     return OBBject(results=Query(**locals()).execute())
