@@ -20,7 +20,7 @@ def pairs(
     standard_params: StandardParams,
     extra_params: ExtraParams,
 ) -> OBBject[BaseModel]:
-    """Forex Pairs. Forex available pairs."""
+    """Available Forex Pairs."""
     return OBBject(results=Query(**locals()).execute())
 
 
@@ -32,5 +32,17 @@ def load(
     standard_params: StandardParams,
     extra_params: ExtraParams,
 ) -> OBBject[BaseModel]:
-    """Forex Historical Price. Forex historical data."""
+    """Forex Pairs Historical Price Data."""
+    return OBBject(results=Query(**locals()).execute())
+
+
+# pylint: disable=unused-argument
+@router.command(model="ForexQuote")
+def quote(
+    cc: CommandContext,
+    provider_choices: ProviderChoices,
+    standard_params: StandardParams,
+    extra_params: ExtraParams,
+) -> OBBject[BaseModel]:
+    """Forex Pairs Quote."""
     return OBBject(results=Query(**locals()).execute())
