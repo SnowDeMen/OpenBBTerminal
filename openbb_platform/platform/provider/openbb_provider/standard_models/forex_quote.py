@@ -15,7 +15,7 @@ class ForexQuoteQueryParams(QueryParams):
 
     symbol: str = Field(
         description=QUERY_DESCRIPTIONS.get("symbol", "")
-        + " In this case, the comma separated list of symbols."
+        + " Accepted formats are CURR1CURR2 and CURR1/CURR2."
     )
 
     @field_validator("symbol", mode="before", check_fields=False)
