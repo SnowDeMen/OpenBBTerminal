@@ -31,6 +31,6 @@ class ForexQuoteData(Data):
     """Forex Quote Data."""
 
     symbol: str = Field(description=DATA_DESCRIPTIONS.get("symbol", ""))
-    ask: float = Field(description="Latest ask price for the currency pair.")
-    bid: float = Field(description="Latest bid price for the currency pair.")
+    ask_price: float = Field(description="Latest ask price for the currency pair.")
+    bid_price: float = Field(description="Latest bid price for the currency pair.")
     date: datetime = Field(description=DATA_DESCRIPTIONS.get("date", ""))
