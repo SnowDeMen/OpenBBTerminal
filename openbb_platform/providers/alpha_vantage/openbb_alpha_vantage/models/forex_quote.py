@@ -69,10 +69,6 @@ class AVForexQuoteData(ForexQuoteData):
         alias="Exchange Rate",
         description="The exchange rate between the two currencies.",
     )
-    last_refreshed: datetime = Field(
-        alias="Last Refreshed",
-        description="The last time the data was refreshed.",
-    )
     time_zone: str = Field(
         alias="Time Zone",
         description="The time zone of the exchange rate.",
@@ -119,4 +115,5 @@ class AVForexQuoteFetcher(
             extract_key_name(field): value
             for field, value in data.items()
         }
+        data["symbol"] = query.symbol
         return AVForexQuoteData.model_validate(data)
