@@ -19,6 +19,11 @@ class FMPForexQuoteQueryParams(ForexQuoteQueryParams):
     Source: https://site.financialmodelingprep.com/developer/docs#last-forex-quote
     """
 
+    @field_validator("symbol", mode="before", check_fields=False)
+    @classmethod
+    def symbol_validate(cls, v):
+        return v.replace("/", "") if "/" in v else v
+
 
 class FMPForexQuoteData(ForexQuoteData):
     """FMP Forex Quote Data."""
