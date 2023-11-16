@@ -11,9 +11,6 @@ files = [
     {file = "annotated_types-0.6.0.tar.gz", hash = "sha256:563339e807e53ffd9c267e99fc6d9ea23eb8443c08f112651963e24e22f84a5d"},
 ]
 
-[package.dependencies]
-typing-extensions = {version = ">=4.0.0", markers = "python_version < \"3.9\""}
-
 [[package]]
 name = "anyio"
 version = "3.7.1"
@@ -1545,5 +1542,5 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 
 [metadata]
 lock-version = "2.0"
-python-versions = ">=3.8,<3.12"
-content-hash = "7928f8f79f4ca4a68861bd7ba16a36747c483a056b05218eaf7cbb4ae53a5bf0"
+python-versions = ">=3.9,<3.12"
+content-hash = "d27ad35efe49508c9f4ac32e2f1e2653e20de665e2e50af76b2ff0eed430f4d8"
