@@ -1,4 +1,4 @@
-"""Top Retail fetcher."""
+"""Nasdaq Top Retail Model."""
 
 from datetime import datetime
 from typing import Any, Dict, List, Optional
@@ -13,14 +13,14 @@ from pydantic import field_validator
 
 
 class NasdaqTopRetailQueryParams(TopRetailQueryParams):
-    """Top Retail query parameters.
+    """Nasdaq Top Retail Query.
 
     Source: https://data.nasdaq.com/databases/RTAT/data
     """
 
 
 class NasdaqTopRetailData(TopRetailData):
-    """Nasdaq Top Retail data."""
+    """Nasdaq Top Retail Data."""
 
     @field_validator("date", mode="before", check_fields=False)
     def validate_date(cls, v: Any) -> Any:  # pylint: disable=E0213
@@ -28,8 +28,10 @@ class NasdaqTopRetailData(TopRetailData):
         return datetime.strptime(v, "%Y-%m-%d").date()
 
 
-class NasdaqTopRetailFetcher(Fetcher[TopRetailQueryParams, List[NasdaqTopRetailData]]):
-    """Nasdaq Top Retail Fetcher."""
+class NasdaqTopRetailFetcher(
+    Fetcher[NasdaqTopRetailQueryParams, List[NasdaqTopRetailData]]
+):
+    """Transform the query, extract and transform the data from the Nasdaq endpoints."""
 
     @staticmethod
     def transform_query(params: Dict[str, Any]) -> NasdaqTopRetailQueryParams:

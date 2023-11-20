@@ -22,7 +22,7 @@ from openbb_fmp.models.equity_historical import FMPEquityHistoricalFetcher
 from openbb_fmp.models.equity_ownership import FMPEquityOwnershipFetcher
 from openbb_fmp.models.equity_peers import FMPEquityPeersFetcher
 from openbb_fmp.models.equity_quote import FMPEquityQuoteFetcher
-from openbb_fmp.models.equity_search import FMPEquitySearchFetcher
+from openbb_fmp.models.equity_screener import FMPEquityScreenerFetcher
 from openbb_fmp.models.equity_valuation_multiples import (
     FMPEquityValuationMultiplesFetcher,
 )
@@ -35,15 +35,14 @@ from openbb_fmp.models.etf_search import FMPEtfSearchFetcher
 from openbb_fmp.models.etf_sectors import FMPEtfSectorsFetcher
 from openbb_fmp.models.executive_compensation import FMPExecutiveCompensationFetcher
 from openbb_fmp.models.financial_ratios import FMPFinancialRatiosFetcher
-from openbb_fmp.models.global_news import FMPGlobalNewsFetcher
 from openbb_fmp.models.historical_dividends import FMPHistoricalDividendsFetcher
 from openbb_fmp.models.historical_employees import FMPHistoricalEmployeesFetcher
-from openbb_fmp.models.historical_splits import FMPHistoricalStockSplitsFetcher
+from openbb_fmp.models.historical_eps import FMPHistoricalEpsFetcher
+from openbb_fmp.models.historical_splits import FMPHistoricalSplitsFetcher
 from openbb_fmp.models.income_statement import FMPIncomeStatementFetcher
 from openbb_fmp.models.income_statement_growth import FMPIncomeStatementGrowthFetcher
-from openbb_fmp.models.index_constituents import (
-    FMPIndexConstituentsFetcher,
-)
+from openbb_fmp.models.index_constituents import FMPIndexConstituentsFetcher
+from openbb_fmp.models.insider_trading import FMPInsiderTradingFetcher
 from openbb_fmp.models.institutional_ownership import FMPInstitutionalOwnershipFetcher
 from openbb_fmp.models.key_executives import FMPKeyExecutivesFetcher
 from openbb_fmp.models.key_metrics import FMPKeyMetricsFetcher
@@ -56,8 +55,8 @@ from openbb_fmp.models.revenue_business_line import FMPRevenueBusinessLineFetche
 from openbb_fmp.models.revenue_geographic import FMPRevenueGeographicFetcher
 from openbb_fmp.models.risk_premium import FMPRiskPremiumFetcher
 from openbb_fmp.models.share_statistics import FMPShareStatisticsFetcher
-from openbb_fmp.models.stock_insider_trading import FMPStockInsiderTradingFetcher
 from openbb_fmp.models.treasury_rates import FMPTreasuryRatesFetcher
+from openbb_fmp.models.world_news import FMPWorldNewsFetcher
 from openbb_provider.abstract.provider import Provider
 
 fmp_provider = Provider(
@@ -65,7 +64,7 @@ fmp_provider = Provider(
     website="https://financialmodelingprep.com/",
     description="""Financial Modeling Prep is a new concept that informs you about
     stock market information (news, currencies, and stock prices).""",
-    required_credentials=["api_key"],
+    credentials=["api_key"],
     fetcher_dict={
         "AnalystEstimates": FMPAnalystEstimatesFetcher,
         "AvailableIndices": FMPAvailableIndicesFetcher,
@@ -90,7 +89,7 @@ fmp_provider = Provider(
         "EquityOwnership": FMPEquityOwnershipFetcher,
         "EquityPeers": FMPEquityPeersFetcher,
         "EquityQuote": FMPEquityQuoteFetcher,
-        "EquitySearch": FMPEquitySearchFetcher,
+        "EquityScreener": FMPEquityScreenerFetcher,
         "EquityValuationMultiples": FMPEquityValuationMultiplesFetcher,
         "EtfCountries": FMPEtfCountriesFetcher,
         "EtfHoldings": FMPEtfHoldingsFetcher,
@@ -101,16 +100,17 @@ fmp_provider = Provider(
         "EtfSectors": FMPEtfSectorsFetcher,
         "ExecutiveCompensation": FMPExecutiveCompensationFetcher,
         "FinancialRatios": FMPFinancialRatiosFetcher,
-        "GlobalNews": FMPGlobalNewsFetcher,
         "HistoricalDividends": FMPHistoricalDividendsFetcher,
         "HistoricalEmployees": FMPHistoricalEmployeesFetcher,
-        "HistoricalStockSplits": FMPHistoricalStockSplitsFetcher,
+        "HistoricalEps": FMPHistoricalEpsFetcher,
+        "HistoricalSplits": FMPHistoricalSplitsFetcher,
         "IncomeStatement": FMPIncomeStatementFetcher,
         "IncomeStatementGrowth": FMPIncomeStatementGrowthFetcher,
+        "IndexConstituents": FMPIndexConstituentsFetcher,
+        "InsiderTrading": FMPInsiderTradingFetcher,
         "InstitutionalOwnership": FMPInstitutionalOwnershipFetcher,
         "KeyExecutives": FMPKeyExecutivesFetcher,
         "KeyMetrics": FMPKeyMetricsFetcher,
-        "IndexConstituents": FMPIndexConstituentsFetcher,
         "MarketIndices": FMPMarketIndicesFetcher,
         "MarketSnapshots": FMPMarketSnapshotsFetcher,
         "PricePerformance": FMPPricePerformanceFetcher,
@@ -120,7 +120,7 @@ fmp_provider = Provider(
         "RevenueGeographic": FMPRevenueGeographicFetcher,
         "RiskPremium": FMPRiskPremiumFetcher,
         "ShareStatistics": FMPShareStatisticsFetcher,
-        "StockInsiderTrading": FMPStockInsiderTradingFetcher,
         "TreasuryRates": FMPTreasuryRatesFetcher,
+        "WorldNews": FMPWorldNewsFetcher,
     },
 )

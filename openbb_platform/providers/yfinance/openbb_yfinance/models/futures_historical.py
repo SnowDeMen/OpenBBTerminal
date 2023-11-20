@@ -1,4 +1,4 @@
-"""yfinance Futures End of Day fetcher."""
+"""Yahoo Finance Futures Historical Price Model."""
 # ruff: noqa: SIM105
 
 
@@ -21,7 +21,7 @@ from yfinance import Ticker
 
 
 class YFinanceFuturesHistoricalQueryParams(FuturesHistoricalQueryParams):
-    """YFinance Futures End of Day Query.
+    """Yahoo Finance Futures historical Price Query.
 
     Source: https://finance.yahoo.com/crypto/
     """
@@ -40,11 +40,11 @@ class YFinanceFuturesHistoricalQueryParams(FuturesHistoricalQueryParams):
 
 
 class YFinanceFuturesHistoricalData(FuturesHistoricalData):
-    """YFinance Futures End of Day Data."""
+    """Yahoo Finance Futures Historical Price Data."""
 
     @field_validator("date", mode="before", check_fields=False)
     @classmethod
-    def date_validate(cls, v):  # pylint: disable=E0213
+    def date_validate(cls, v):
         """Return datetime object from string."""
         if isinstance(v, Timestamp):
             return v.to_pydatetime()
@@ -57,7 +57,7 @@ class YFinanceFuturesHistoricalFetcher(
         List[YFinanceFuturesHistoricalData],
     ]
 ):
-    """Transform the query, extract and transform the data from the yfinance endpoints."""
+    """Transform the query, extract and transform the data from the Yahoo Finance endpoints."""
 
     @staticmethod
     def transform_query(params: Dict[str, Any]) -> YFinanceFuturesHistoricalQueryParams:
@@ -79,11 +79,11 @@ class YFinanceFuturesHistoricalFetcher(
 
     @staticmethod
     def extract_data(
-        query: YFinanceFuturesHistoricalQueryParams,
+        query: YFinanceFuturesHistoricalQueryParams,  # pylint: disable=unused-argument
         credentials: Optional[Dict[str, str]],
         **kwargs: Any,
     ) -> dict:
-        """Return the raw data from the yfinance endpoint."""
+        """Return the raw data from the Yahoo Finance endpoint."""
         symbol = ""
 
         if query.expiration:
@@ -148,7 +148,7 @@ class YFinanceFuturesHistoricalFetcher(
 
     @staticmethod
     def transform_data(
-        query: YFinanceFuturesHistoricalQueryParams,
+        query: YFinanceFuturesHistoricalQueryParams,  # pylint: disable=unused-argument
         data: dict,
         **kwargs: Any,
     ) -> List[YFinanceFuturesHistoricalData]:

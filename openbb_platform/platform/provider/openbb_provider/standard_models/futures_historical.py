@@ -1,4 +1,4 @@
-"""Futures aggregate end of day price data model."""
+"""Futures Historical Price Standard Model."""
 
 
 from datetime import date, datetime
@@ -13,7 +13,7 @@ from openbb_provider.utils.descriptions import DATA_DESCRIPTIONS, QUERY_DESCRIPT
 
 
 class FuturesHistoricalQueryParams(QueryParams):
-    """Futures end of day Query."""
+    """Futures Historical Price Query."""
 
     symbol: str = Field(description=QUERY_DESCRIPTIONS.get("symbol", ""))
     start_date: Optional[date] = Field(
@@ -30,6 +30,7 @@ class FuturesHistoricalQueryParams(QueryParams):
     )
 
     @field_validator("symbol", mode="before", check_fields=False)
+    @classmethod
     def upper_symbol(cls, v: Union[str, List[str], Set[str]]):
         """Convert symbol to uppercase."""
         if isinstance(v, str):
@@ -38,7 +39,7 @@ class FuturesHistoricalQueryParams(QueryParams):
 
 
 class FuturesHistoricalData(Data):
-    """Futures end of day price Data."""
+    """Futures Historical Price Data."""
 
     date: datetime = Field(description=DATA_DESCRIPTIONS.get("date", ""))
     open: float = Field(description=DATA_DESCRIPTIONS.get("open", ""))
@@ -48,6 +49,7 @@ class FuturesHistoricalData(Data):
     volume: float = Field(description=DATA_DESCRIPTIONS.get("volume", ""))
 
     @field_validator("symbol", mode="before", check_fields=False)
-    def date_validate(cls, v):  # pylint: disable=E0213
+    @classmethod
+    def date_validate(cls, v):
         """Return formatted datetime."""
         return parser.isoparse(str(v))

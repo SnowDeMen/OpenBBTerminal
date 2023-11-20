@@ -1,5 +1,4 @@
-"""Polygon stocks end of day fetcher."""
-
+"""Polygon Equity Historical Price Model."""
 
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
@@ -23,7 +22,7 @@ from pydantic import (
 
 
 class PolygonEquityHistoricalQueryParams(EquityHistoricalQueryParams):
-    """Polygon stocks end of day Query.
+    """Polygon Equity Historical Price Query.
 
     Source: https://polygon.io/docs/stocks/getting-started
     """
@@ -67,7 +66,7 @@ class PolygonEquityHistoricalQueryParams(EquityHistoricalQueryParams):
 
 
 class PolygonEquityHistoricalData(EquityHistoricalData):
-    """Polygon stocks end of day Data."""
+    """Polygon Equity Historical Price Data."""
 
     __alias_dict__ = {
         "date": "t",
@@ -92,7 +91,7 @@ class PolygonEquityHistoricalFetcher(
         List[PolygonEquityHistoricalData],
     ]
 ):
-    """Equity Historical Price Fetcher."""
+    """Transform the query, extract and transform the data from the Polygon endpoints."""
 
     @staticmethod
     def transform_query(params: Dict[str, Any]) -> PolygonEquityHistoricalQueryParams:

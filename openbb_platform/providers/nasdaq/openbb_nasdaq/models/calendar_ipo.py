@@ -1,4 +1,4 @@
-"""Nasdaq IPO Calendar fetcher."""
+"""Nasdaq IPO Calendar Model."""
 
 from concurrent.futures import ThreadPoolExecutor
 from datetime import (
@@ -115,6 +115,8 @@ class NasdaqCalendarIpoFetcher(
     ]
 ):
     """Transform the query, extract and transform the data from the Nasdaq endpoints."""
+
+    require_credentials = False
 
     @staticmethod
     def transform_query(params: Dict[str, Any]) -> NasdaqCalendarIpoQueryParams:

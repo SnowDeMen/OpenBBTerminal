@@ -421,9 +421,9 @@ def test_get_child_path_list(path_handler, path_list):
 
 def test_clean_path(path_handler):
     """Test clean path."""
-    path = "/stocks/load"
+    path = "/equity/price/historical"
     result = path_handler.clean_path(path=path)
-    assert result == "stocks_load"
+    assert result == "equity_price_historical"
 
 
 def test_build_module_name(path_handler):
@@ -431,8 +431,8 @@ def test_build_module_name(path_handler):
     module_name = path_handler.build_module_name(path="")
     assert module_name == "__extensions__"
 
-    module_name = path_handler.build_module_name(path="/stocks/load")
-    assert module_name == "stocks_load"
+    module_name = path_handler.build_module_name(path="/equity/price/historical")
+    assert module_name == "equity_price_historical"
 
 
 def test_build_module_class(path_handler):
@@ -440,8 +440,8 @@ def test_build_module_class(path_handler):
     module_class = path_handler.build_module_class(path="")
     assert module_class == "Extensions"
 
-    module_class = path_handler.build_module_class(path="/stocks/load")
-    assert module_class == "ROUTER_stocks_load"
+    module_class = path_handler.build_module_class(path="/equity/price/historical")
+    assert module_class == "ROUTER_equity_price_historical"
 
 
 @pytest.fixture(scope="module")
@@ -497,7 +497,7 @@ def test_get_OBBject_description(docstring_generator):
 def test_generate_model_docstring(docstring_generator):
     """Test generate model docstring."""
     docstring = ""
-    model_name = "GlobalNews"
+    model_name = "WorldNews"
     summary = "This is a summary."
 
     pi = docstring_generator.provider_interface
@@ -517,14 +517,14 @@ def test_generate_model_docstring(docstring_generator):
         explicit_params=explicit_dict,
         params=params,
         returns=returns,
-        results_type="List[GlobalNews]",
+        results_type="List[WorldNews]",
     )
 
     assert docstring
     assert summary in docstring
     assert "Parameters" in docstring
     assert "Returns" in docstring
-    assert "GlobalNews" in docstring
+    assert "WorldNews" in docstring
 
 
 def test_generate(docstring_generator):
@@ -538,9 +538,9 @@ def test_generate(docstring_generator):
         "param2": Parameter("int", kind=Parameter.POSITIONAL_OR_KEYWORD),
     }
 
-    f = docstring_generator.generate(
-        func=some_func, formatted_params=formatted_params, model_name="GlobalNews"
+    doc = docstring_generator.generate(
+        func=some_func, formatted_params=formatted_params, model_name="WorldNews"
     )
-    assert f
-    assert "Parameters" in f.__doc__
-    assert "Returns" in f.__doc__
+    assert doc
+    assert "Parameters" in doc
+    assert "Returns" in doc
