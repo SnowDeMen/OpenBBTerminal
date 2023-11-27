@@ -8,6 +8,7 @@ import pandas as pd
 
 from openbb_terminal.cryptocurrency.dataframe_helpers import prettify_column_names
 
+ccxt.Exchange.enableRateLimit = False
 
 def get_exchanges() -> List[str]:
     """Helper method to get all the exchanges supported by ccxt
